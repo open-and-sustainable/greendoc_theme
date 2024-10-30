@@ -12,7 +12,7 @@ nav_links:
     url: "/usage.html"
   - name: "Customization"
     url: "/customization.html"
-  - name: "Examples"
+  - name: "Long Text<br>Examples"
     url: "/example.html"
 
 
