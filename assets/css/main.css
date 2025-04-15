@@ -1,24 +1,34 @@
 :root {
-    --nav-background-color: #4CAF50; /* Default nav bar color */
-    --nav-hover-color: #45a049;      /* Default hover color */
-    --nav-link-color: #ffffff;       /* Default link color */
-    --toc-hover-color: #4CAF50;      /* Default hover color for TOC*/
-    --table-header-background: var(--nav-background-color); /* Table header background */
-    --table-hover-background: var(--toc-hover-color);       /* Table row hover background */
-    --table-border-color: #ddd;                             /* Table border color */
+    --nav-background-color: #4caf50; /* Default nav bar color */
+    --nav-hover-color: #45a049; /* Default hover color */
+    --nav-link-color: #ffffff; /* Default link color */
+    --toc-hover-color: #4caf50; /* Default hover color for TOC*/
+    --table-header-background: var(
+        --nav-background-color
+    ); /* Table header background */
+    --table-hover-background: var(
+        --toc-hover-color
+    ); /* Table row hover background */
+    --table-border-color: #ddd; /* Table border color */
 }
 
 /* Global reset, except for headers that need specific margins */
-body, p {
+body,
+p {
     margin: 0;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 /* Preserve custom margins for headers */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin-bottom: 0.5em; /* Default bottom margin */
 }
 
@@ -117,6 +127,11 @@ h3 {
     width: 25%;
     padding: 15px;
     background-color: #f7f7f7;
+    position: sticky;
+    top: 20px; /* Distance from top of viewport when sticky */
+    max-height: 90vh; /* Prevents TOC from being taller than viewport */
+    overflow-y: auto; /* Adds scrollbar when TOC is too tall */
+    align-self: flex-start; /* Ensures proper alignment in flex container */
 }
 
 .toc-sidebar nav ul {
@@ -132,15 +147,15 @@ h3 {
 .toc-sidebar nav ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 1em;  /* Base font size */
+    font-size: 1em; /* Base font size */
 }
 
 /* Style for third-level headings (###) */
 .toc-sidebar nav ul ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 0.9em;  /* Slightly smaller font size */
-    padding-left: 15px;  /* Indentation */
+    font-size: 0.9em; /* Slightly smaller font size */
+    padding-left: 15px; /* Indentation */
 }
 
 .toc-sidebar nav ul li a:hover {
@@ -174,47 +189,59 @@ footer a:hover {
 /* Inline code styling */
 code {
     background-color: #f5f5f5;
-    color: #d63384;  /* Color for inline code */
+    color: #d63384; /* Color for inline code */
     padding: 2px 4px;
     border-radius: 3px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     font-size: 90%;
 }
 
 /* Code block styling (overrides inline code styles within pre elements) */
 pre {
-    background-color: #2d2d2d;  /* Dark background */
-    color: #ffffff;  /* White font color */
+    background-color: #2d2d2d; /* Dark background */
+    color: #ffffff; /* White font color */
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     font-size: 90%;
 }
 
 /* Specifically target code inside pre elements */
 pre code {
-    background-color: transparent;  /* Ensure the background is transparent to inherit from pre */
-    color: #ffffff;  /* Ensure white font color inside code blocks */
+    background-color: transparent; /* Ensure the background is transparent to inherit from pre */
+    color: #ffffff; /* Ensure white font color inside code blocks */
 }
 
 /* General styling for the code block */
 pre.highlight {
-    background-color: #2d2d2d;  /* Dark background for the code block */
-    color: #ffffff;  /* Default text color */
+    background-color: #2d2d2d; /* Dark background for the code block */
+    color: #ffffff; /* Default text color */
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
 }
 
 /* Specific styles for Rouge's syntax classes */
-.highlight .k { color: #ff79c6; }  /* Keyword (e.g., def, end) */
-.highlight .nf { color: #8be9fd; }  /* Function names */
-.highlight .nb { color: #bd93f9; }  /* Built-ins (e.g., puts) */
-.highlight .s1 { color: #f1fa8c; }  /* Strings */
-.highlight .c { color: #999999; }  /* Comments (not shown in your example, but often used) */
-.highlight .p { color: #ffffff; }  /* Punctuation (e.g., periods, commas) */
+.highlight .k {
+    color: #ff79c6;
+} /* Keyword (e.g., def, end) */
+.highlight .nf {
+    color: #8be9fd;
+} /* Function names */
+.highlight .nb {
+    color: #bd93f9;
+} /* Built-ins (e.g., puts) */
+.highlight .s1 {
+    color: #f1fa8c;
+} /* Strings */
+.highlight .c {
+    color: #999999;
+} /* Comments (not shown in your example, but often used) */
+.highlight .p {
+    color: #ffffff;
+} /* Punctuation (e.g., periods, commas) */
 
 /* Main table styling */
 .table-spacing {
@@ -223,7 +250,8 @@ pre.highlight {
 }
 
 /* Adding spacing inside the table cells */
-.table-spacing td, .table-spacing th {
+.table-spacing td,
+.table-spacing th {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 10px;
@@ -231,7 +259,9 @@ pre.highlight {
 }
 
 /* Adding borders to create a grid effect */
-.table-spacing, .table-spacing th, .table-spacing td {
+.table-spacing,
+.table-spacing th,
+.table-spacing td {
     border: 1px solid var(--table-border-color);
 }
 
@@ -266,7 +296,14 @@ pre.highlight {
         flex-direction: column;
     }
 
-    .toc-sidebar, .page-content {
+    .toc-sidebar,
+    .page-content {
         width: 100%;
+    }
+
+    .toc-sidebar {
+        position: static; /* Disables sticky positioning on mobile */
+        max-height: none; /* Removes height restriction */
+        overflow-y: visible; /* Removes scrollbar */
     }
 }
