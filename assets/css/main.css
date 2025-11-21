@@ -337,15 +337,21 @@ img {
     margin: 0 0 var(--space-xs);
     position: relative;
     list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
 }
 
 .toc-sidebar nav ul li a {
     color: var(--color-fg);
     font-weight: 600;
-    padding: var(--space-xs) var(--space-sm);
-    display: inline-flex;
+    padding: var(--space-xs) var(--space-sm) var(--space-xs) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
     border-radius: 8px;
     transition: background 0.2s ease, color 0.2s ease;
+    flex: 1;
 }
 
 .toc-sidebar nav li::marker {
@@ -373,10 +379,17 @@ img {
 .toc-toggle {
     background: none;
     border: none;
-    padding: var(--space-xs);
+    padding: 0;
     cursor: pointer;
     color: var(--color-fg);
-    margin-right: var(--space-xs);
+    margin-right: 0;
+    font-size: 1.15em;
+    line-height: 1;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .toc-collapsed > ul {
