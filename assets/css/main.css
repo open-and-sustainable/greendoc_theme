@@ -168,7 +168,7 @@ img {
     grid-template-columns: minmax(0, 1fr) 220px;
     gap: var(--space-lg);
     align-items: start;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: var(--space-xl) var(--space-lg);
 }
@@ -191,8 +191,8 @@ img {
 .toc-sidebar {
     background: var(--color-muted);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: var(--space-sm);
+    border-radius: 10px;
+    padding: var(--space-md);
     position: sticky;
     top: var(--space-lg);
     max-height: 80vh;
@@ -207,13 +207,13 @@ img {
 }
 
 .toc-sidebar nav ul li {
-    margin: 0 0 var(--space-xs);
+    margin: 0 0 var(--space-sm);
 }
 
 .toc-sidebar nav ul li a {
     color: var(--color-fg);
     font-weight: 500;
-    padding: calc(var(--space-xs) / 2) 0;
+    padding: var(--space-xs) 0;
     display: inline-flex;
     border-bottom: 1px solid transparent;
 }
