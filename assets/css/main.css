@@ -322,6 +322,7 @@ img {
 
 .toc-sidebar nav ul {
     list-style: none;
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
@@ -335,6 +336,7 @@ img {
 .toc-sidebar nav ul li {
     margin: 0 0 var(--space-xs);
     position: relative;
+    list-style: none;
 }
 
 .toc-sidebar nav ul li a {
@@ -352,6 +354,10 @@ img {
     margin-right: var(--space-xs);
     font-weight: 700;
     color: var(--color-accent);
+}
+
+.toc-sidebar nav li::marker {
+    content: '';
 }
 
 .toc-sidebar nav ul li a:hover,
