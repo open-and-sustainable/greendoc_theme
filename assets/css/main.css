@@ -89,6 +89,13 @@ img {
     padding: 0 var(--space-lg);
 }
 
+.site-header .site-width {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding-inline: clamp(var(--space-sm), 3vw, var(--space-md));
+}
+
 .main-nav .site-width {
     max-width: 100%;
     padding-left: var(--space-md);
