@@ -1,309 +1,384 @@
 :root {
-    --nav-background-color: #4caf50; /* Default nav bar color */
-    --nav-hover-color: #45a049; /* Default hover color */
-    --nav-link-color: #ffffff; /* Default link color */
-    --toc-hover-color: #4caf50; /* Default hover color for TOC*/
-    --table-header-background: var(
-        --nav-background-color
-    ); /* Table header background */
-    --table-hover-background: var(
-        --toc-hover-color
-    ); /* Table row hover background */
-    --table-border-color: #ddd; /* Table border color */
+    --color-bg: #ffffff;
+    --color-fg: #222222;
+    --color-accent: #2f8f3a;
+    --color-muted: #f5f5f5;
+    --color-border: #e2e2e2;
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+
+    --font-body: "Open Sans", system-ui, -apple-system, sans-serif;
+    --font-heading: "Open Sans", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
-/* Global reset, except for headers that need specific margins */
-body,
-p {
+* {
+    box-sizing: border-box;
+}
+
+body {
     margin: 0;
-    padding: 0;
-    font-family: "Open Sans", sans-serif;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Preserve custom margins for headers */
+p {
+    margin: 0 0 var(--space-md);
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    padding: 0;
-    font-family: "Open Sans", sans-serif;
-    margin-bottom: 0.5em; /* Default bottom margin */
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-fg);
+    margin: var(--space-lg) 0 var(--space-sm);
 }
 
-/* Add specific margins for h2 and h3 */
+h1 {
+    font-size: 2.1rem;
+}
+
 h2 {
-    margin-top: 1.7em;
+    font-size: 1.6rem;
 }
 
 h3 {
-    margin-top: 1.2em;
+    font-size: 1.3rem;
 }
 
-.header-container {
-    text-align: center;
-    padding: 20px 0;
+h4 {
+    font-size: 1.15rem;
 }
 
-.site-logo {
-    height: 60px; /* Predefined height for logo */
-    vertical-align: middle;
-}
-
-.site-title {
-    display: inline-block;
-    font-size: 2.5em;
-    font-weight: 700;
-    line-height: 60px; /* Matches the height of the logo */
-    margin-left: 10px;
-    vertical-align: middle;
-}
-
-.main-nav {
-    background-color: var(--nav-background-color);
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-
-.main-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.main-nav ul li {
-    margin: 0 15px;
-}
-
-.main-nav ul li a {
-    color: var(--nav-link-color);
+a {
+    color: var(--color-accent);
     text-decoration: none;
-    padding: 10px 20px;
     font-weight: 600;
 }
 
-.main-nav ul li a:hover {
-    background-color: var(--nav-hover-color);
+a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
-.main-nav ul li.center {
-    flex-grow: 1;
-    text-align: center;
+a:visited {
+    color: var(--color-accent);
 }
 
-.main-nav .left {
-    margin-right: auto;
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-.main-nav .right {
-    margin-left: auto;
+.site-width {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
 }
 
-.center {
+.header-container {
     display: flex;
-    justify-content: center;
-    flex-grow: 1;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.site-logo {
+    height: 48px;
+    width: auto;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.main-nav {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--color-fg);
+    cursor: pointer;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-sm) var(--space-xs);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    border-bottom-color: var(--color-accent);
+    text-decoration: none;
 }
 
 .content-wrapper {
-    display: flex;
-    margin: 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: var(--space-lg);
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
 }
 
 .page-content {
-    width: 75%;
-    padding: 15px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.page-content > * + * {
+    margin-top: var(--space-md);
+}
+
+.page-content ul,
+.page-content ol {
+    padding-left: 1.2em;
+    margin: 0 0 var(--space-md);
 }
 
 .toc-sidebar {
-    width: 25%;
-    padding: 15px;
-    background-color: #f7f7f7;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: var(--space-sm) var(--space-md);
     position: sticky;
-    top: 20px; /* Distance from top of viewport when sticky */
-    max-height: 90vh; /* Prevents TOC from being taller than viewport */
-    overflow-y: auto; /* Adds scrollbar when TOC is too tall */
-    align-self: flex-start; /* Ensures proper alignment in flex container */
+    top: var(--space-lg);
+    max-height: 80vh;
+    overflow-y: auto;
+    font-size: 0.9rem;
 }
 
 .toc-sidebar nav ul {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .toc-sidebar nav ul li {
-    margin: 0.5em 0;
+    margin: 0 0 var(--space-sm);
 }
 
-/* Style for second-level headings (##) */
 .toc-sidebar nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1em; /* Base font size */
+    color: var(--color-fg);
+    font-weight: 500;
+    padding: var(--space-xs) 0;
+    display: inline-flex;
+    border-bottom: 1px solid transparent;
 }
 
-/* Style for third-level headings (###) */
+.toc-sidebar nav ul li a:hover,
+.toc-sidebar nav ul li a:focus {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
 .toc-sidebar nav ul ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 0.9em; /* Slightly smaller font size */
-    padding-left: 15px; /* Indentation */
+    padding-left: var(--space-sm);
+    font-size: 0.9rem;
 }
 
-.toc-sidebar nav ul li a:hover {
-    color: var(--toc-hover-color);
+.toc-sidebar nav ul li.active > a {
+    color: var(--color-accent);
+    font-weight: 600;
 }
 
-/* Define global link styles */
-a {
-    color: var(--nav-background-color);
-    text-decoration: none; /* Optional: to match the navigation bar's font weight */
-}
-
-a:hover {
-    color: var(--nav-background-color);
-}
-
-a:visited {
-    color: var(--nav-background-color); /* Same color for visited links */
-}
-
-/* Ensure the footer links have the same styles */
-footer a {
-    color: var(--nav-background-color);
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: var(--nav-background-color);
-}
-
-/* Inline code styling */
 code {
-    background-color: #f5f5f5;
-    color: #d63384; /* Color for inline code */
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-family: "Courier New", Courier, monospace;
+    background: var(--color-muted);
+    color: #b03a2e;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
     font-size: 90%;
 }
 
-/* Code block styling (overrides inline code styles within pre elements) */
 pre {
-    background-color: #2d2d2d; /* Dark background */
-    color: #ffffff; /* White font color */
-    padding: 15px;
-    border-radius: 5px;
+    background: var(--color-muted);
+    color: var(--color-fg);
+    padding: var(--space-md);
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
     overflow-x: auto;
-    font-family: "Courier New", Courier, monospace;
-    font-size: 90%;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    box-shadow: none;
 }
 
-/* Specifically target code inside pre elements */
 pre code {
-    background-color: transparent; /* Ensure the background is transparent to inherit from pre */
-    color: #ffffff; /* Ensure white font color inside code blocks */
+    background: transparent;
+    color: inherit;
+    padding: 0;
 }
 
-/* General styling for the code block */
-pre.highlight {
-    background-color: #2d2d2d; /* Dark background for the code block */
-    color: #ffffff; /* Default text color */
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-    font-family: "Courier New", Courier, monospace;
-}
-
-/* Specific styles for Rouge's syntax classes */
-.highlight .k {
-    color: #ff79c6;
-} /* Keyword (e.g., def, end) */
-.highlight .nf {
-    color: #8be9fd;
-} /* Function names */
-.highlight .nb {
-    color: #bd93f9;
-} /* Built-ins (e.g., puts) */
-.highlight .s1 {
-    color: #f1fa8c;
-} /* Strings */
-.highlight .c {
-    color: #999999;
-} /* Comments (not shown in your example, but often used) */
-.highlight .p {
-    color: #ffffff;
-} /* Punctuation (e.g., periods, commas) */
-
-/* Main table styling */
 .table-spacing {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-md) 0;
+    font-size: 0.95rem;
 }
 
-/* Adding spacing inside the table cells */
-.table-spacing td,
-.table-spacing th {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-/* Adding borders to create a grid effect */
-.table-spacing,
 .table-spacing th,
 .table-spacing td {
-    border: 1px solid var(--table-border-color);
+    border: 1px solid var(--color-border);
+    padding: var(--space-sm) var(--space-md);
 }
 
-/* Table header styling using root color variable */
 .table-spacing th {
-    background-color: var(--table-header-background);
-    color: var(--nav-link-color);
+    background: var(--color-muted);
+    color: var(--color-fg);
     text-align: left;
+    font-weight: 700;
 }
 
-/* Adding hover effect for better user experience */
 .table-spacing tr:hover {
-    background-color: var(--table-hover-background);
+    background: #f0f0f0;
 }
 
-/* Ensure responsive behavior */
-@media (max-width: 768px) {
-    .header-container {
-        padding: 10px 0;
-    }
+footer {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-xl);
+    padding: var(--space-lg) var(--space-lg) var(--space-xl);
+    font-size: 0.95rem;
+    text-align: center;
+    color: #555555;
+}
 
-    .site-title {
-        font-size: 1.8em;
-    }
+.heading-anchor {
+    margin-left: var(--space-xs);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+}
 
-    .main-nav ul li {
-        display: block;
-        margin: 5px 0;
-    }
+h1:hover .heading-anchor,
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+h4:hover .heading-anchor {
+    opacity: 1;
+}
 
+@media (max-width: 1024px) {
     .content-wrapper {
-        flex-direction: column;
-    }
-
-    .toc-sidebar,
-    .page-content {
-        width: 100%;
+        grid-template-columns: 1fr;
     }
 
     .toc-sidebar {
-        position: static; /* Disables sticky positioning on mobile */
-        max-height: none; /* Removes height restriction */
-        overflow-y: visible; /* Removes scrollbar */
+        position: static;
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .site-width {
+        padding: 0 var(--space-md);
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-xs);
+    }
+
+    .site-title {
+        font-size: 1.4rem;
+    }
+
+    .nav-inner {
+        flex-wrap: wrap;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0 var(--space-sm);
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: var(--space-xs) 0;
+    }
+
+    .content-wrapper {
+        padding: var(--space-lg) var(--space-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .site-width {
+        padding: 0 var(--space-sm);
+    }
+
+    .content-wrapper {
+        padding: var(--space-lg) var(--space-sm);
     }
 }
