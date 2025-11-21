@@ -89,6 +89,12 @@ img {
     padding: 0 var(--space-lg);
 }
 
+.main-nav .site-width {
+    max-width: 100%;
+    padding-left: var(--space-md);
+    padding-right: var(--space-lg);
+}
+
 .header-container {
     display: flex;
     align-items: center;
