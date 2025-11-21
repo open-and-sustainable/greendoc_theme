@@ -293,12 +293,24 @@ img {
 .sidebar-reveal {
     display: none;
     margin-bottom: var(--space-sm);
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
+    border: 1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
     border-radius: 10px;
     padding: var(--space-sm) var(--space-md);
     font-weight: 700;
     cursor: pointer;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+    box-shadow: var(--shadow-soft);
+    white-space: nowrap;
+}
+
+.sidebar-reveal:hover,
+.sidebar-reveal:focus-visible {
+    background: color-mix(in srgb, var(--color-accent) 20%, var(--color-bg));
+    border-color: var(--color-accent);
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
 
 .toc-body {
@@ -332,6 +344,14 @@ img {
     display: inline-flex;
     border-radius: 8px;
     transition: background 0.2s ease, color 0.2s ease;
+}
+
+.toc-sidebar nav > ul > li > a::before {
+    content: '+';
+    display: inline-block;
+    margin-right: var(--space-xs);
+    font-weight: 700;
+    color: var(--color-accent);
 }
 
 .toc-sidebar nav ul li a:hover,
