@@ -174,9 +174,8 @@ img {
     grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
     gap: var(--space-lg);
     align-items: start;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: var(--space-xl) var(--space-lg);
+    width: 100%;
+    padding: var(--space-xl) clamp(var(--space-md), 4vw, var(--space-lg));
 }
 
 .page-content {
