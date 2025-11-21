@@ -348,14 +348,6 @@ img {
     transition: background 0.2s ease, color 0.2s ease;
 }
 
-.toc-sidebar nav > ul > li > a::before {
-    content: '+';
-    display: inline-block;
-    margin-right: var(--space-xs);
-    font-weight: 700;
-    color: var(--color-accent);
-}
-
 .toc-sidebar nav li::marker {
     content: '';
 }
