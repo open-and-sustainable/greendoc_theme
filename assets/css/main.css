@@ -192,7 +192,7 @@ img {
     background: var(--color-muted);
     border: 1px solid var(--color-border);
     border-radius: 10px;
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-md);
     position: sticky;
     top: var(--space-lg);
     max-height: 80vh;
