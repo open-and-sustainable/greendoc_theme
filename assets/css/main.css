@@ -226,7 +226,7 @@ img {
     gap: var(--space-xl);
     align-items: start;
     width: 100%;
-    padding: var(--space-xl) clamp(var(--space-md), 4vw, var(--space-2xl));
+    padding: var(--space-xl) clamp(var(--space-sm), 3vw, var(--space-md));
 }
 
 .page-content {
