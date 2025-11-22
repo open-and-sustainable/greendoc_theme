@@ -39,12 +39,71 @@
         <div class="site-width nav-inner">
             <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
             <ul class="nav-links">
-                <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a></li>
-                {% for link in site.nav_links %}
+                <li class="nav-item"><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a></li>
+                {% assign nav_groups = site.nav_links | default: [] %}
+                {% assign current_group = '' %}
+                {% assign submenu_open = false %}
+                {% for link in nav_groups %}
+                    {% assign trimmed_name = link.name | strip | replace_first: '/', '' %}
+                    {% assign parts = trimmed_name | split: '/' %}
+                    {% assign group_name = parts[0] %}
+                    {% assign label = '' %}
+                    {% for part in parts offset:1 %}
+                        {% if label == '' %}
+                            {% assign label = part %}
+                        {% else %}
+                            {% assign label = label | append: '/' | append: part %}
+                        {% endif %}
+                    {% endfor %}
                     {% assign link_url = link.url | relative_url %}
-                    <li><a href="{{ link_url }}"{% if page.url == link.url or page.url == link_url %} aria-current="page"{% endif %}>{{ link.name }}</a></li>
+
+                    {% if parts.size > 1 %}
+                        {% if group_name != current_group %}
+                            {% if submenu_open %}
+                                    </ul>
+                                </li>
+                            {% endif %}
+                            {% assign current_group = group_name %}
+                            {% assign submenu_open = true %}
+                            {% assign group_active = false %}
+                            {% assign group_index = forloop.index0 %}
+                            {% comment %}
+                                Look ahead for active links in this group
+                            {% endcomment %}
+                            {% for future_link in nav_groups offset:forloop.index0 %}
+                                {% assign future_trimmed = future_link.name | strip | replace_first: '/', '' %}
+                                {% assign future_parts = future_trimmed | split: '/' %}
+                                {% if future_parts[0] != current_group %}
+                                    {% break %}
+                                {% endif %}
+                                {% assign future_url = future_link.url | relative_url %}
+                                {% if page.url == future_link.url or page.url == future_url %}
+                                    {% assign group_active = true %}
+                                {% endif %}
+                            {% endfor %}
+                            <li class="nav-item has-children{% if group_active %} is-active{% endif %}">
+                                <button class="nav-parent" aria-expanded="{{ group_active | default: false | jsonify }}" aria-controls="nav-group-{{ group_index }}">
+                                    <span class="nav-label">{{ group_name }}</span>
+                                    <span class="nav-caret" aria-hidden="true">▾</span>
+                                </button>
+                                <ul class="nav-submenu" id="nav-group-{{ group_index }}">
+                        {% endif %}
+                        <li><a href="{{ link_url }}"{% if page.url == link.url or page.url == link_url %} aria-current="page"{% endif %}>{{ label | default: group_name }}</a></li>
+                    {% else %}
+                        {% if submenu_open %}
+                                </ul>
+                            </li>
+                            {% assign submenu_open = false %}
+                            {% assign current_group = '' %}
+                        {% endif %}
+                        <li class="nav-item"><a href="{{ link_url }}"{% if page.url == link.url or page.url == link_url %} aria-current="page"{% endif %}>{{ group_name }}</a></li>
+                    {% endif %}
                 {% endfor %}
-                <li><a href="{{ site.github_repo }}">GitHub Repository</a></li>
+                {% if submenu_open %}
+                        </ul>
+                    </li>
+                {% endif %}
+                <li class="nav-item"><a href="{{ site.github_repo }}">GitHub Repository</a></li>
             </ul>
         </div>
     </nav>
@@ -85,6 +144,28 @@
                     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 });
             }
+
+            const navParents = document.querySelectorAll('.nav-parent');
+            navParents.forEach((button) => {
+                const parentItem = button.closest('.has-children');
+                const submenu = parentItem?.querySelector('.nav-submenu');
+                const isActive = parentItem?.classList.contains('is-active');
+
+                if (isActive) {
+                    parentItem?.classList.add('is-open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+
+                button.addEventListener('click', () => {
+                    const willOpen = !parentItem?.classList.contains('is-open');
+                    parentItem?.classList.toggle('is-open', willOpen);
+                    button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+
+                    if (!willOpen) {
+                        submenu?.querySelectorAll('a')?.forEach((link) => link.blur());
+                    }
+                });
+            });
 
             const tocSidebar = document.querySelector('.toc-sidebar');
             const sidebarReveal = document.querySelector('.sidebar-reveal');
