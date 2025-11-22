@@ -211,6 +211,7 @@ img {
     background: none;
     border-radius: 8px;
     cursor: pointer;
+    color: var(--color-accent);
 }
 
 .nav-links a {
@@ -241,9 +242,14 @@ img {
     transition: transform 0.2s ease;
 }
 
-.has-children.is-open .nav-caret,
-.has-children.is-active .nav-caret {
+.has-children.is-open .nav-caret {
     transform: rotate(180deg);
+}
+
+.has-children.is-active > .nav-parent {
+    border-bottom-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
 }
 
 .nav-submenu {
@@ -275,8 +281,7 @@ img {
     justify-content: space-between;
 }
 
-.has-children.is-open > .nav-submenu,
-.has-children.is-active > .nav-submenu {
+.has-children.is-open > .nav-submenu {
     display: block;
 }
 

@@ -82,7 +82,7 @@
                                 {% endif %}
                             {% endfor %}
                             <li class="nav-item has-children{% if group_active %} is-active{% endif %}">
-                                <button class="nav-parent" aria-expanded="{{ group_active | default: false | jsonify }}" aria-controls="nav-group-{{ group_index }}">
+                                <button class="nav-parent" aria-expanded="false" aria-controls="nav-group-{{ group_index }}">
                                     <span class="nav-label">{{ group_name }}</span>
                                     <span class="nav-caret" aria-hidden="true">▾</span>
                                 </button>
@@ -149,12 +149,6 @@
             navParents.forEach((button) => {
                 const parentItem = button.closest('.has-children');
                 const submenu = parentItem?.querySelector('.nav-submenu');
-                const isActive = parentItem?.classList.contains('is-active');
-
-                if (isActive) {
-                    parentItem?.classList.add('is-open');
-                    button.setAttribute('aria-expanded', 'true');
-                }
 
                 button.addEventListener('click', () => {
                     const willOpen = !parentItem?.classList.contains('is-open');
