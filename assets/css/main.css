@@ -338,20 +338,19 @@ img {
     position: relative;
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
-    gap: 0;
+    column-gap: 0;
 }
 
 .toc-sidebar nav ul li a {
     color: var(--color-fg);
     font-weight: 600;
     padding: var(--space-xs) var(--space-sm) var(--space-xs) 0;
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
+    display: block;
     border-radius: 8px;
     transition: background 0.2s ease, color 0.2s ease;
-    flex: 1;
+    flex: 1 1 auto;
 }
 
 .toc-sidebar nav li::marker {
@@ -390,6 +389,11 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
+}
+
+.toc-sidebar nav ul li > ul {
+    flex-basis: 100%;
 }
 
 .toc-collapsed > ul {
