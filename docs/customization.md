@@ -7,7 +7,7 @@ layout: default
 
 The GreenDoc Theme is designed to be flexible and easy to customize, allowing you to tailor the look and feel of your documentation site to your specific needs. This guide will walk you through various customization options, from basic settings to more advanced modifications.
 
-## Customizing the Site Title and Description
+## Site Title and Description
 
 You can set the title and description of your site in the `_config.yml` file, which will be used throughout the site, including in the header and browser title bar.
 
@@ -16,7 +16,7 @@ title: "My Project"
 description: "A brief description of my project."
 ```
 These values help give your documentation a unique identity and improve SEO.
-## Adding a Custom Logo and Favicon
+## Logo and Favicon
 ### Custom Logo
 
 To add a custom logo to your site’s header, follow these steps:
@@ -37,7 +37,7 @@ Similarly, to add a custom favicon:
     favicon: "/assets/images/favicon.ico"
 ```
 The favicon will appear in the browser tab next to your site's title.
-## Customizing Colors and Fonts
+## Colors and Fonts
 The GreenDoc Theme allows you to easily customize the site's colors and fonts to match your brand or project theme.
 ### Customizing Colors
 1. **Open `assets/css/main.css`** and locate the root variables section:
