@@ -192,23 +192,36 @@ img {
     flex-wrap: wrap;
 }
 
-.nav-links li {
+.nav-item {
+    position: relative;
     margin: 0;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-parent {
     display: inline-flex;
     align-items: center;
+    gap: var(--space-xs);
     padding: var(--space-xs) var(--space-sm);
     letter-spacing: 0.03em;
     text-transform: uppercase;
     font-size: 0.92rem;
     font-weight: 600;
     border-bottom: 2px solid transparent;
+    background: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--color-accent);
+}
+
+.nav-links a {
+    cursor: pointer;
 }
 
 .nav-links a:hover,
-.nav-links a:focus {
+.nav-links a:focus,
+.nav-parent:hover,
+.nav-parent:focus-visible {
     border-bottom-color: var(--color-accent);
     text-decoration: none;
 }
@@ -218,6 +231,65 @@ img {
     background: color-mix(in srgb, var(--color-accent) 12%, transparent);
     border-radius: 8px;
     padding-inline: var(--space-sm);
+}
+
+.nav-parent {
+    border: 1px solid transparent;
+}
+
+.nav-caret {
+    font-size: 0.75em;
+    transition: transform 0.2s ease;
+}
+
+.has-children.is-open .nav-caret {
+    transform: rotate(180deg);
+}
+
+.has-children.is-active > .nav-parent {
+    border-bottom-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+}
+
+.nav-submenu {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-sm) 0;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 6px);
+    min-width: 220px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-soft);
+    display: none;
+    z-index: 50;
+}
+
+.nav-submenu li {
+    width: 100%;
+}
+
+.nav-submenu a {
+    width: 100%;
+    border-bottom: none;
+    padding: var(--space-xs) var(--space-md);
+    text-transform: none;
+    letter-spacing: normal;
+    justify-content: space-between;
+}
+
+.has-children.is-open > .nav-submenu {
+    display: block;
+}
+
+@media (min-width: 769px) {
+    .has-children:hover > .nav-submenu,
+    .has-children:focus-within > .nav-submenu {
+        display: block;
+    }
 }
 
 .content-wrapper {
@@ -625,6 +697,16 @@ h4:hover .heading-anchor {
 
     .nav-links a {
         padding: var(--space-xs) 0;
+    }
+
+    .nav-submenu {
+        position: static;
+        width: 100%;
+        padding-left: var(--space-sm);
+        box-shadow: none;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        margin-bottom: var(--space-xs);
     }
 
     .content-wrapper {

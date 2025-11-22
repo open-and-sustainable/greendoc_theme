@@ -8,11 +8,11 @@ favicon: "/assets/images/favicon.ico"
 #theme: greendoc_theme
 remote_theme: Open-and-Sustainable/greendoc_theme
 nav_links:
-  - name: "Usage"
+  - name: "/Use/Usage Guide"
     url: "/usage.html"
-  - name: "Customization"
+  - name: "/Instructions/Customization"
     url: "/customization.html"
-  - name: "Long Text<br>Examples"
+  - name: "/Instructions/Long Text<br>Examples"
     url: "/example.html"
 
 
