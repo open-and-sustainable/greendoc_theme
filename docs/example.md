@@ -4,7 +4,7 @@ layout: default
 ---
 
 # Examples
-## Table with Markdown Formatting Features
+## Table of Markdown Formats
 
 | **Feature**          | **Markdown Syntax**                | **Example Output**                         |
 |:---------------------|-----------------------------------:|-------------------------------------------:|
