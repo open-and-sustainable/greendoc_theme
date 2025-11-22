@@ -226,7 +226,7 @@ img {
     gap: var(--space-xl);
     align-items: start;
     width: 100%;
-    padding: var(--space-xl) clamp(var(--space-sm), 3vw, var(--space-md));
+    padding: var(--space-md) clamp(var(--space-sm), 3vw, var(--space-md)) var(--space-xl);
 }
 
 .page-content {
@@ -624,7 +624,7 @@ h4:hover .heading-anchor {
     }
 
     .content-wrapper {
-        padding: var(--space-lg) var(--space-md);
+        padding: var(--space-md) var(--space-md);
     }
 
     .toc-sidebar {
@@ -644,6 +644,6 @@ h4:hover .heading-anchor {
     }
 
     .content-wrapper {
-        padding: var(--space-lg) var(--space-sm);
+        padding: var(--space-md) var(--space-sm);
     }
 }
