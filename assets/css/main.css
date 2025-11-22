@@ -340,7 +340,7 @@ img {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    column-gap: 0;
+    column-gap: var(--space-xs);
 }
 
 .toc-sidebar nav ul li a {
@@ -351,6 +351,7 @@ img {
     border-radius: 8px;
     transition: background 0.2s ease, color 0.2s ease;
     flex: 1 1 auto;
+    min-width: 0;
 }
 
 .toc-sidebar nav li::marker {
@@ -382,11 +383,11 @@ img {
     cursor: pointer;
     color: var(--color-fg);
     margin-right: 0;
-    font-size: 1.15em;
+    font-size: 1em;
     line-height: 1;
-    width: 1em;
-    height: 1em;
-    display: flex;
+    width: 1.1em;
+    height: 1.1em;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
