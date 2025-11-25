@@ -30,8 +30,10 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
         <div class="site-width header-container">
-            <img src="{{ site.logo | relative_url }}" alt="Logo" class="site-logo">
-            <h1 class="site-title">{{ site.title }}</h1>
+            <a class="site-home-link" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+                <img src="{{ site.logo | relative_url }}" alt="Logo" class="site-logo">
+                <h1 class="site-title">{{ site.title }}</h1>
+            </a>
         </div>
     </header>
 
@@ -39,7 +41,6 @@
         <div class="site-width nav-inner">
             <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
             <ul class="nav-links">
-                <li class="nav-item"><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a></li>
                 {% assign nav_groups = site.nav_links | default: [] %}
                 {% assign current_group = '' %}
                 {% assign submenu_open = false %}
