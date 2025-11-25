@@ -450,7 +450,7 @@ img {
     color: var(--color-accent);
     font-weight: 700;
     background: color-mix(in srgb, var(--color-accent) 16%, transparent);
-    box-shadow: inset 3px 0 0 var(--color-accent);
+    /* box-shadow: inset 3px 0 0 var(--color-accent);  remove this */
 }
 
 .toc-toggle {
